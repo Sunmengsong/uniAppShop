@@ -33,7 +33,7 @@
 			</view>
 				<scroll-view scroll-x="true" style="white-space: nowrap;">
 					<view class="seckill" v-for="(item,index) in goodsList" :key="index">
-						<image :src="item.image" mode=""></image>
+						<image :src="item.image" mode="" @click="toDetails(item.pid)"></image>
 						<view class="title">{{item.title}}</view>
 						<view class="price">¥ {{item.price}}</view>
 					</view>
@@ -55,7 +55,7 @@
 			<scroll-view scroll-x="true" style="white-space: nowrap;">
 				<view class="groupItem" v-for="(item, index) in goodsList" :key="index">
 					<view v-if="index%2==0">
-						<image :src="item.image3"></image>
+						<image :src="item.image3" @click="toDetails(item.pid)"></image>
 						<view class="title">{{item.title}}</view>
 						<view class="pri">
 							<view class="price">¥ {{item.price}}</view>
@@ -76,7 +76,7 @@
 							 <progress percent="70" activeColor="#FA436A" border-radius="6"/>
 							 <text>6人成团</text>
 						</view>
-						<image :src="item.image"></image>
+						<image :src="item.image" @click="toDetails(item.pid)"></image>
 					</view>
 				</view>
 			</scroll-view>
@@ -96,7 +96,7 @@
 			</view>
 			<view class="guessSection">
 				<view class="guessItem" v-for="(item, index) in goodsList" :key="index">
-					<image :src="item.image"></image>
+					<image :src="item.image" @click="toDetails(item.pid)"></image>
 					<view class="title">{{item.title}}</view>
 					<view class="price">¥{{item.price}}</view>
 				</view>
@@ -110,12 +110,15 @@
 		data() {
 			return {
 				carouselList: [{
+						bid:1,
 						src: "../../static/temp/banner1.jpg"
 					},
 					{
+						bid:2,
 						src: "../../static/temp/banner3.jpg"
 					},
 					{
+						bid:3,
 						src: "../../static/temp/banner4.jpg"
 					},
 				],
@@ -142,6 +145,7 @@
 				],
 				/* 商品列表 */
 				goodsList: [{
+						pid:1,
 						image: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553187020783&di=bac9dd78b36fd984502d404d231011c0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201609%2F26%2F20160926173213_s5adi.jpeg",
 						image2: "http://pic.rmb.bdstatic.com/819a044daa66718c2c40a48c1ba971e6.jpeg",
 						image3: "http://img001.hc360.cn/y5/M00/1B/45/wKhQUVYFE0uEZ7zVAAAAAMj3H1w418.jpg",
@@ -150,6 +154,7 @@
 						sales: 61,
 					},
 					{
+						pid:2,
 						image: "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2501372545,1035168089&fm=15&gp=0.jpg",
 						image2: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554013048&di=a3dc9fd1406dd7bad7fbb97b5489ec04&imgtype=jpg&er=1&src=http%3A%2F%2Fimg009.hc360.cn%2Fhb%2FnKo44ac2656F831c684507E3Da0E3a26841.jpg",
 						image3: "http://img.zcool.cn/community/017a4e58b4eab6a801219c77084373.jpg",
@@ -158,6 +163,7 @@
 						sales: 16,
 					},
 					{
+						pid:3,
 						image: "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg",
 						image2: "http://m.360buyimg.com/n12/jfs/t247/42/1078640382/162559/3628a0b/53f5ad09N0dd79894.jpg%21q70.jpg",
 						image3: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=751395366,442092706&fm=26&gp=0.jpg",
@@ -165,6 +171,7 @@
 						price: 108.8,
 						sales: 5,
 					}, {
+						pid:4,
 						image: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1666912511,1141903566&fm=26&gp=0.jpg",
 						image2: "http://images.jaadee.com/images/201702/goods_img/30150_d85aed83521.jpg",
 						image3: "http://img13.360buyimg.com/popWaterMark/jfs/t865/120/206320620/138889/dcc94caa/550acedcN613e2a9d.jpg",
@@ -172,6 +179,7 @@
 						price: 265,
 						sales: 88,
 					}, {
+						pid:5,
 						image: "https://img13.360buyimg.com/n8/jfs/t1/30343/20/1029/481370/5c449438Ecb46a15b/2b2adccb6dc742fd.jpg",
 						image2: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553418265666&di=d4a7f7eb0ae3c859edeb921641ee1c3a&imgtype=0&src=http%3A%2F%2Fimg003.hc360.cn%2Fy3%2FM02%2FF8%2F9F%2FwKhQh1TuSkGELIlQAAAAAPuLl4M987.jpg",
 						image3: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583590377750&di=db56936dcfe12de37cfb4a0ce2aae959&imgtype=0&src=http%3A%2F%2Fimg1.tbcdn.cn%2Ftfscom%2Fi2%2F1763640827%2FTB2z2BFXS_9F1JjSZFrXXcrVFXa_%2521%25211763640827.jpg",
@@ -179,6 +187,7 @@
 						price: 422,
 						sales: 137,
 					}, {
+						pid:6,
 						image: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553187020783&di=bac9dd78b36fd984502d404d231011c0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201609%2F26%2F20160926173213_s5adi.jpeg",
 						image2: "http://image5.suning.cn/uimg/b2c/newcatentries/0070158827-000000000622091973_2_800x800.jpg",
 						image3: "http://img.61ef.cn/news/201903/20/2019032009251784.jpg",
@@ -193,7 +202,11 @@
 
 		},
 		methods: {
-
+			toDetails(id){
+				uni.navigateTo({
+					url:"../details/details?id="+id
+				})
+			}
 		}
 	}
 </script>
